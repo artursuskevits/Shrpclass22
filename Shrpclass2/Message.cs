@@ -87,28 +87,38 @@ namespace Shrpclass2
             Console.WriteLine("most popular message is "+ mostpopularmessage.Content + " and his autor is "+ mostpopularmessage.Author);
             
         }
-        private string GenerateMessageName(int index)
-        {
-            return $"Message_{index + 1}";
-        }
-        public void autmatizate()
+        
+        public static void autmatizate()
         {
             List<Message> messagelist = new List<Message> { };
+
             Random rnd = new Random();
+            int like_counter = 0;
             int counter = rnd.Next(2, 10);
-            for (int i = counter; i < counter+1; i++)
+            Console.WriteLine("Create {0} messages",counter);
+            for (int i = 0; i < counter+1; i++)
             {
-                
-                //Message m3 = new Message("Privet", "Zhenja", DateTime.Now.AddMinutes(-3));
-                Console.WriteLine("Write your message");
+                Console.WriteLine("Write {0} message",i+1);
                 string messagetext = Console.ReadLine();
                 Console.WriteLine("Write your nickname");
                 string authorname = Console.ReadLine();
-                string nameofmessage = GenerateMessageName(i);
+                
+                
 
-                Message nameofmessage = new Message(messagetext,authorname, DateTime.Now);
-                //messagelist.Add();
+                Message newmessage = new Message(messagetext,authorname, DateTime.Now);
+                like_counter= rnd.Next(0, 50);
+                for (int ii = 0; ii < like_counter; ii++)
+                {
+                    newmessage.AddLike();
+                   
+                }
+                messagelist.Add(newmessage);
+                messagelist[i].ShowMessageInfo();
+              
+                Console.WriteLine();
             }
+            messagelist[0].GEtPopularityINfo(messagelist);
+
 
         }
     }
