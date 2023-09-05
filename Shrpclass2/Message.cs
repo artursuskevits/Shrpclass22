@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Shrpclass2
 {
+    
     public class Message
     {
         List<string> messagelist = new List<string> { "Wassup", "Poka", "I wanna die", "GAGAGAgA","OGO","(", "lalalalala","Vlad" };
@@ -22,7 +23,7 @@ namespace Shrpclass2
             this._author = author;
             this._time = time;
         }
-
+        public Message() { }
         public int Likes { get => _likes; }
         public DateTime Time { get => _time; }
         public string Author { get => _author; }
@@ -73,7 +74,7 @@ namespace Shrpclass2
 
         public void GEtPopularityINfo(List<Message> messages)
         {
-            Message mostpopularmessage= new Message("Privet", "Zhenja", DateTime.Now.AddMinutes(-3));
+            Message mostpopularmessage= new Message();
             double hypecounter= 0;
             foreach (Message message in messages)
             {
@@ -96,16 +97,16 @@ namespace Shrpclass2
             int like_counter = 0;
             int counter = rnd.Next(2, 10);
             Console.WriteLine("Create {0} messages",counter);
-            for (int i = 0; i < counter+1; i++)
+            for (int i = 0; i < counter; i++)
             {
                 Console.WriteLine("Write {0} message",i+1);
                 string messagetext = Console.ReadLine();
                 Console.WriteLine("Write your nickname");
                 string authorname = Console.ReadLine();
-                
-                
+                int t = -1 * rnd.Next(0, 1000000);
+                DateTime dhm = DateTime.Now.Date.AddSeconds(t);
 
-                Message newmessage = new Message(messagetext,authorname, DateTime.Now);
+                Message newmessage = new Message(messagetext,authorname, dhm);
                 like_counter= rnd.Next(0, 50);
                 for (int ii = 0; ii < like_counter; ii++)
                 {

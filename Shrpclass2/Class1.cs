@@ -17,6 +17,7 @@ namespace Shrpclass2
 
 
                 Message.autmatizate();
+                Console.ReadLine();
                 
             }
         }
